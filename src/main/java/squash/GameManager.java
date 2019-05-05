@@ -17,6 +17,8 @@ public class GameManager implements KeyListener {
 
     public PHASE gamePhase;
 
+    public Player player;
+
     private GameManager() {
         // Initialize
         this.setUp();
@@ -30,9 +32,14 @@ public class GameManager implements KeyListener {
         this.gamePhase = PHASE.TITLE;
     }
 
+    private void startPlay() {
+        player = new Player();
+    }
+
     private void proceedPhase() {
         if(this.gamePhase == PHASE.TITLE){
             this.gamePhase = PHASE.PLAY;
+            this.startPlay();
         }
     }
 
