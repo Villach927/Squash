@@ -1,6 +1,9 @@
 package squash;
 
-public class GameManager {
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+public class GameManager implements KeyListener {
     private enum PHASE {
         TITLE,
         PLAY,
@@ -25,5 +28,30 @@ public class GameManager {
 
     private void setUp(){
         this.gamePhase = PHASE.TITLE;
+    }
+
+    private void proceedPhase(){
+        if(this.gamePhase == PHASE.TITLE){
+            this.gamePhase = PHASE.PLAY;
+        }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int key = e.getKeyCode();
+        System.out.print("a");
+        if(key == KeyEvent.VK_ENTER){
+            this.proceedPhase();
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }

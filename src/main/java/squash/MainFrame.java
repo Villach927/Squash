@@ -11,10 +11,12 @@ public class MainFrame extends JFrame {
         this.setVisible(true);
 
         this.getContentPane().setPreferredSize(new Dimension(GameManager.WIDTH, GameManager.HEIGHT));
-        this.getContentPane().add(new MainPanel());
+        this.getContentPane().add(MainPanel.getInstance());
         this.pack();
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        this.addKeyListener(GameManager.getInstance());
     }
 
     public static MainFrame getInstance(){
