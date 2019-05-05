@@ -35,11 +35,11 @@ public class GameManager implements KeyListener {
     private void startPlay() {
         player = new Player();
         MainPanel.getInstance().repaint();
+        this.gamePhase = PHASE.PLAY;
     }
 
     private void proceedPhase() {
-        if(this.gamePhase == PHASE.TITLE){
-            this.gamePhase = PHASE.PLAY;
+        if(this.gamePhase == PHASE.TITLE) {
             this.startPlay();
         }
     }
@@ -52,8 +52,16 @@ public class GameManager implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
-        if(key == KeyEvent.VK_ENTER){
+        if(key == KeyEvent.VK_ENTER) {
             this.proceedPhase();
+        }
+        if(this.gamePhase == PHASE.PLAY) {
+            if(key == KeyEvent.VK_LEFT) {
+                this.player.toLeft();
+            }else if(key == KeyEvent.VK_RIGHT) {
+                this.player.toRight();
+            }
+            MainPanel.getInstance().repaint();
         }
     }
 

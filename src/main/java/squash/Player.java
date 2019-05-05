@@ -3,6 +3,7 @@ package squash;
 public class Player {
     public static final int SIZE = 10;
     public static final int DEFAULT_X = 100, DEFAULT_Y = 500;
+    public static final int VELOCITY = 10;
     private int x, y;
 
     public Player() {
@@ -24,5 +25,13 @@ public class Player {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public void toLeft() {
+        this.setX(this.getX() - VELOCITY);
+    }
+
+    public void toRight() {
+        this.setX(this.getX() + VELOCITY);
     }
 }
