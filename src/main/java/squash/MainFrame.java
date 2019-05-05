@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
-    private static MainFrame MainFrameInstance = new MainFrame();
+    private static MainFrame mainFrameInstance = new MainFrame();
 
     private MainFrame(){
         this.setTitle("Squash");
@@ -18,6 +18,6 @@ public class MainFrame extends JFrame {
     }
 
     public static MainFrame getInstance(){
-        return MainFrameInstance;
+        return mainFrameInstance;
     }
 }
