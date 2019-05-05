@@ -28,10 +28,14 @@ public class Player {
     }
 
     public void toLeft() {
-        this.setX(this.getX() - VELOCITY);
+        if(this.getX() - VELOCITY >= 0) {
+            this.setX(this.getX() - VELOCITY);
+        }
     }
 
     public void toRight() {
-        this.setX(this.getX() + VELOCITY);
+        if(this.getX() + VELOCITY < GameManager.WIDTH) {
+            this.setX(this.getX() + VELOCITY);
+        }
     }
 }
