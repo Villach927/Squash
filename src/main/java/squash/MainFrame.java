@@ -6,7 +6,7 @@ import java.awt.*;
 public class MainFrame extends JFrame {
     private static MainFrame mainFrameInstance = new MainFrame();
 
-    private MainFrame(){
+    private MainFrame() {
         this.setTitle("Squash");
         this.setVisible(true);
 
@@ -19,7 +19,7 @@ public class MainFrame extends JFrame {
         this.addKeyListener(GameManager.getInstance());
     }
 
-    public static MainFrame getInstance(){
+    public static MainFrame getInstance() {
         return mainFrameInstance;
     }
 }
