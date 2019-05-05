@@ -17,20 +17,20 @@ public class GameManager implements KeyListener {
 
     public PHASE gamePhase;
 
-    private GameManager(){
+    private GameManager() {
         // Initialize
         this.setUp();
     }
 
-    public static GameManager getInstance(){
+    public static GameManager getInstance() {
         return gameManagerInstance;
     }
 
-    private void setUp(){
+    private void setUp() {
         this.gamePhase = PHASE.TITLE;
     }
 
-    private void proceedPhase(){
+    private void proceedPhase() {
         if(this.gamePhase == PHASE.TITLE){
             this.gamePhase = PHASE.PLAY;
         }
