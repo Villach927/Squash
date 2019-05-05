@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class GameManager implements KeyListener {
-    private enum PHASE {
+    public enum PHASE {
         TITLE,
         PLAY,
         RESULT,
@@ -34,6 +34,7 @@ public class GameManager implements KeyListener {
 
     private void startPlay() {
         player = new Player();
+        MainPanel.getInstance().repaint();
     }
 
     private void proceedPhase() {
@@ -51,7 +52,6 @@ public class GameManager implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
-        System.out.print("a");
         if(key == KeyEvent.VK_ENTER){
             this.proceedPhase();
         }

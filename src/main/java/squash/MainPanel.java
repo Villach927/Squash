@@ -15,5 +15,12 @@ public class MainPanel extends JPanel {
 
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
+
+        GameManager manager = GameManager.getInstance();
+
+        if(manager.gamePhase == GameManager.PHASE.PLAY){
+            Player player = manager.player;
+            graphics.fillRect(player.getX(), player.getY(), player.SIZE, player.SIZE);
+        }
     }
 }

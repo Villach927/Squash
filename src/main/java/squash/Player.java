@@ -2,10 +2,12 @@ package squash;
 
 public class Player {
     public static final int SIZE = 10;
+    public static final int DEFAULT_X = 100, DEFAULT_Y = 500;
     private int x, y;
 
     public Player() {
-
+        this.setX(DEFAULT_X);
+        this.setY(DEFAULT_Y);
     }
 
     public int getX() {
