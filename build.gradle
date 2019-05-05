@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'application'
+    id 'pmd'
 }
 
 group 'Squash'
@@ -7,10 +9,32 @@ version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
+mainClassName = 'squash.Main'
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+pmd {
+    toolVersion '5.3.3'
+    ignoreFailures = true
+    consoleOutput = true
+
+    ruleSetFiles = files("$rootDir/config/rules.xml")
+    ruleSets = []  // To apply only the custom rules
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+    from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
 }
