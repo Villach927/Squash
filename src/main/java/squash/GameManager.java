@@ -3,7 +3,7 @@ package squash;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class GameManager implements KeyListener {
+public class GameManager implements KeyListener, Runnable{
     public enum PHASE {
         TITLE,
         PLAY,
@@ -15,6 +15,8 @@ public class GameManager implements KeyListener {
     public static final int WIDTH = 640;
     public static final int HEIGHT = 960;
 
+    public static final int INTERVAL = 10; //スレッド実行時のインターバル．ミリ秒単位で指定．
+
     public PHASE gamePhase;
 
     public Player player;
@@ -22,6 +24,8 @@ public class GameManager implements KeyListener {
     private GameManager() {
         // Initialize
         this.setUp();
+        Thread th = new Thread(this);
+        th.start();
     }
 
     public static GameManager getInstance() {
@@ -45,6 +49,19 @@ public class GameManager implements KeyListener {
     }
 
     @Override
+    public void run() {
+        while(true){
+            MainPanel.getInstance().repaint();
+
+            try {
+                Thread.sleep(INTERVAL);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
     public void keyTyped(KeyEvent e) {
 
     }
@@ -61,7 +78,6 @@ public class GameManager implements KeyListener {
             }else if(key == KeyEvent.VK_RIGHT) {
                 this.player.toRight();
             }
-            MainPanel.getInstance().repaint();
         }
     }
 
